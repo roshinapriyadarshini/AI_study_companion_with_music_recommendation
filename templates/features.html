@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NoteTheNote - Features</title>
+	<link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+body {
+	background-image:url("../static/images/back.jpg");
+	/* background:  linear-gradient(to bottom, #5d326c, #350048);  */
+	background:white;
+	padding: 0;
+	margin: 0;
+}
+.top {
+	position: relative;
+	height: 10px;
+	background: linear-gradient(141deg, cyan 0%, rebeccapurple 40%, deeppink 90%);
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+	text-transform: uppercase;
+}
+
+</style>
+
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.foot {
+  display: flex;
+  opacity:0.3
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: 60vh;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+	
+</style>
+
+	<style>
+		/* General Styles */
+		body {
+			perspective: 1000px;
+			margin: 0;
+			font-family: "Roboto", sans-serif;
+		}
+
+		/* Navbar */
+		.nav-link.active {
+			background-color: #007bff;
+			color: white !important;
+		}
+
+		/* Features Section */
+		.featurette {
+			margin-bottom: 3rem;
+		}
+
+		.featurette-heading {
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: #333;
+		}
+
+		.lead {
+			font-size: 1.2rem;
+			color: #555;
+		}
+
+		.btn-feature {
+			background-color: #007bff;
+			color: white;
+			border: none;
+			margin-top: 10px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.btn-feature:hover {
+			background-color: #0056b3;
+		}
+
+		/* Footer */
+		footer {
+			background-color: #f1f1f1;
+		}
+
+		/* Button Styling */
+		.btn-feature-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 15px;
+		}
+
+		.btn-feature {
+			display: inline-block;
+			margin-top: 15px;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+			text-align: center;
+		}
+
+		.btn-feature a {
+			color: white;
+			text-decoration: none;
+		}
+
+		.btn-feature:hover {
+			background-color: #0056b3;
+			transform: translateY(-2px);
+		}
+
+		.btn-feature:active {
+			transform: translateY(0);
+		}
+	</style>
+<style>
+.image-hover {
+    transition: transform 0.3s ease;
+}
+.image-hover:hover {
+    transform: scale(1.1);
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
+.container {
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.container .btn {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 50px;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container .btn a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 30px;
+	padding: 10px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	overflow: hidden;
+	color: #df7213;
+	font-weight: 400px;
+	z-index: 1;
+	transition: 0.5s;
+	backdrop-filter: blur(15px);
+}
+.container .btn:hover a {
+	letter-spacing: 3px;
+}
+.container .btn a::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+	transform: skewX(45deg) translate(0);
+	transition: 0.5s;
+	filter: blur(0px);
+}
+.container .btn:hover a::before {
+	transform: skewX(45deg) translate(200px);
+}
+.container .btn::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	bottom: -5px;
+	width: 30px;
+	height: 10px;
+	background: #f00;
+	border-radius: 10px;
+	transition: 0.5s;
+	transition-delay: 0.5;
+}
+.container .btn:hover::before /*lightup button*/ {
+	bottom: 0;
+	height: 50%;
+	width: 80%;
+	border-radius: 30px;
+}
+
+.container .btn::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	top: -5px;
+	width: 30px;
+	height: 10px;
+	background: #f00;
+	border-radius: 10px;
+	transition: 0.5s;
+	transition-delay: 0.5;
+}
+.container .btn:hover::after /*lightup button*/ {
+	top: 0;
+	height: 50%;
+	width: 80%;
+	border-radius: 30px;
+}
+.container .btn:nth-child(3)::before, /*chnage 1*/
+.container .btn:nth-child(3)::after {
+	background: #ff1f71;
+	box-shadow: 0 0 5px #ff1f71, 0 0 15px #ff1f71, 0 0 30px #ff1f71,
+		0 0 60px #ff1f71;
+}
+.container .btn:nth-child(2)::before, /* 2*/
+.container .btn:nth-child(2)::after {
+	background: #2db2ff;
+	box-shadow: 0 0 5px #2db2ff, 0 0 15px #2db2ff, 0 0 30px #2db2ff,
+		0 0 60px #2db2ff;
+}
+.container .btn:nth-child(1)::before, /* 3*/
+.container .btn:nth-child(1)::after {
+	background: #1eff45;
+	box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
+		0 0 60px #1eff45;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class='top'></div>
+
+	<!-- Navbar -->
+	<div class="container">
+		<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+			<a href="{{ url_for('chatbot') }}"
+				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" width="50" height="50">
+				<span class="fs-4">NoteTheNote</span>
+			</a>
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="{{ url_for('chatbot') }}" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="{{ url_for('features') }}" class="nav-link active"
+						aria-current="page">Features</a></li>
+				<li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact Us</a></li>
+				<li class="nav-item"><a href="{{ url_for('faq') }}" class="nav-link">FAQs</a></li>
+				<li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+			</ul>
+		</header>
+	</div>
+
+	<!-- Features Section -->
+	<!-- Features Section -->
+	<div class="container marketing">
+		<div class="featurette-divider">
+			<!-- Feature 1: Text Summarizer -->
+			<div class="row featurette">
+				
+				<div class="col-md-5">
+					<a href="{{ url_for('index') }}"  style="box-shadow: rgb(219, 2, 2,0.4) -5px 5px , rgb(219, 2, 2, 0.3) -10px 10px, rgb(219, 2, 2, 0.2) -15px 15px, rgb(219, 2, 2, 0.1) -20px 20px, rgb(219, 2, 2, 0.05) -25px 25px;"><img src="{{ url_for('static', filename='images/ai.jpg') }}" width="500" height="500"
+						alt="Text Summarizer" style="box-shadow: rgb(219, 2, 2,0.4) -5px 5px , rgb(219, 2, 2, 0.3) -10px 10px, rgb(219, 2, 2, 0.2) -15px 15px, rgb(219, 2, 2, 0.1) -20px 20px, rgb(219, 2, 2, 0.05) -25px 25px;" class="image-hover"></a>
+				</div>
+				<div class="col-md-7">
+					<h2 class="featurette-heading fw-normal lh-1" style="color:rgb(219, 2, 2);font-weight: bold;">Questions Generator</h2>
+					<h3 style="color:rgb(219, 2, 2);">Questions Generator from Long Texts Effortlessly</h3>
+					<p class="lead" style="color: #0d6efd;">
+						Turn lengthy documents into concise, meaningful summaries. Save time and get the core insights
+						in seconds using our AI-driven text summarization.
+					</p>
+					<div class="btn-feature-container">
+						<div class="container">
+		<div class="btn"><a href="{{ url_for('index') }}">Try Questions Generator</a></div>
+		
+
+	</div>
+					</div>
+				</div>
+			</div>
+
+			<hr class="featurette-divider">
+
+			<!-- Feature 2: Face Recognition -->
+			<div class="row featurette">
+				
+				<div class="col-md-5 order-md-1">
+					<a href="{{ url_for('face_recognition') }}"><img src="{{ url_for('static', filename='images/ml.jpg') }}"width="500" height="500"
+						alt="Face Recognition" style="box-shadow: rgb(219, 2, 2,0.4) -5px 5px , rgb(219, 2, 2, 0.3) -10px 10px, rgb(219, 2, 2, 0.2) -15px 15px, rgb(219, 2, 2, 0.1) -20px 20px, rgb(219, 2, 2, 0.05) -25px 25px;" class="image-hover"></a>
+				</div>
+				<div class="col-md-7 order-md-2">
+					<h2 class="featurette-heading fw-normal lh-1" style="color:rgb(219, 2, 2);font-weight: bold;">Face Recognition</h2>
+					<h3 style="color:rgb(219, 2, 2);">Powerful Image Analysis</h3>
+					<p class="lead" style="color: #0d6efd;">
+						Identify and verify faces in photos or videos with cutting-edge AI. Enhance your security or
+						create engaging apps using our face recognition technology.
+					</p>
+					<div class="btn-feature-container">
+						<div class="container">
+		<div class="btn"><a href="{{ url_for('face_recognition') }}">Try Face Recognition</a></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+	<!-- Footer -->
+	<div class="foot">
+	<footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('chatbot') }}">Home</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('features') }}">Features</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('contact') }}">Contact Us</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('faq') }}">FAQs</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('about') }}">About</a></li>
+    </ul>
+    <p>&copy; 2024 NoteTheNote, Inc</p>
+  </footer>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

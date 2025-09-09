@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet"
+	href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+<link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+body {
+	background-image:url("../static/images/about.jpg");
+	padding: 0;
+	margin: 0;
+}
+
+.top {
+	position: relative;
+	height: 10px;
+	background: linear-gradient(141deg, cyan 0%, rebeccapurple 40%, deeppink 90%);
+}
+
+h1 {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+	text-transform: uppercase;
+}
+
+</style>
+<style>
+@import
+	url("https://fonts.googleapis.com/css2?family=Roboto:wght@200&display=swap")
+	;
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
+
+.form-main {
+	background: linear-gradient(to bottom, #00000024, #00000024),
+		url("../static/images/contact.png") no-repeat center;
+	background-size: cover;
+	min-height: 120vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-main .main-wrapper {
+	border-radius: 10px;
+	padding: 45px;
+	width: 40%;
+	box-shadow: 0 0 5px 5px #00000020;
+	backdrop-filter: blur(5px);
+	background-color: #ffffff85;
+}
+
+@media screen and (max-width: 991px) {
+	.form-main .main-wrapper {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.form-main .main-wrapper {
+		width: 90%;
+	}
+}
+
+.form-main .main-wrapper .form-head {
+	font-size: 30px;
+	line-height: 40px;
+	font-weight: 600;
+	text-align: center;
+	margin: 0px 0 25px;
+}
+
+.form-main .main-wrapper .form-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card {
+	position: relative;
+	width: 100%;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-input {
+	padding: 20px 25px 15px;
+	width: 100%;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: transparent;
+	outline: none;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-input:valid,
+	.form-main .main-wrapper .form-wrapper .form-card .form-input:focus {
+	border: 1px solid #515151;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-input:valid ~
+	.form-label, .form-main .main-wrapper .form-wrapper .form-card .form-input:focus 
+	~ .form-label {
+	color: #515151;
+	top: 30%;
+	transform: translateY(-70%);
+	font-size: 13px;
+	line-height: 23px;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-input:-webkit-autofill,
+	.form-main .main-wrapper .form-wrapper .form-card .form-input:-webkit-autofill:hover,
+	.form-main .main-wrapper .form-wrapper .form-card .form-input:-webkit-autofill:focus,
+	.form-main .main-wrapper .form-wrapper .form-card .form-input:-webkit-autofill:active
+	{
+	transition: background-color 9999s ease-in-out 0s;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-input::-webkit-outer-spin-button,
+	.form-main .main-wrapper .form-wrapper .form-card .form-input::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-label {
+	position: absolute;
+	left: 25px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	transition: 0.3s;
+	margin: 0;
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 500;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-textarea {
+	padding: 20px 25px 15px;
+	width: 100%;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: transparent;
+	outline: none;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: 400;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	resize: none;
+	box-sizing: border-box;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-textarea:valid,
+	.form-main .main-wrapper .form-wrapper .form-card .form-textarea:focus
+	{
+	border: 1px solid #515151;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-textarea:valid 
+	~ .form-textarea-label, .form-main .main-wrapper .form-wrapper .form-card .form-textarea:focus 
+	~ .form-textarea-label {
+	color: #515151;
+	top: 18%;
+	transform: translateY(-82%);
+	font-size: 13px;
+	line-height: 23px;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-textarea:-webkit-autofill,
+	.form-main .main-wrapper .form-wrapper .form-card .form-textarea:-webkit-autofill:hover,
+	.form-main .main-wrapper .form-wrapper .form-card .form-textarea:-webkit-autofill:focus,
+	.form-main .main-wrapper .form-wrapper .form-card .form-textarea:-webkit-autofill:active
+	{
+	transition: background-color 9999s ease-in-out 0s;
+}
+
+.form-main .main-wrapper .form-wrapper .form-card .form-textarea-label {
+	position: absolute;
+	left: 25px;
+	top: 30%;
+	transform: translateY(-70%);
+	pointer-events: none;
+	transition: 0.3s;
+	margin: 0;
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 500;
+}
+
+.btn-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px 0 0;
+}
+
+.btn-wrap button {
+	padding: 0 32px;
+	font-size: 18px;
+	line-height: 48px;
+	border: 1px solid transparent;
+	font-weight: 600;
+	border-radius: 6px;
+	transition: all 0.5s ease;
+	cursor: pointer;
+	box-shadow: 0 0 5px 5px #00000020;
+}
+
+.btn-wrap button:hover {
+	border: 1px solid #000;
+	background: transparent;
+}
+</style>
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.foot {
+  display: flex;
+  background: #222;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: 30vh;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+	
+</style></head>
+<body>
+<div class='top'></div>
+	<div class="container">
+		<header
+			class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+			<a href="{{ url_for('chatbot') }}"
+				class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" width="50" height="50"> <span
+				class="fs-4" style="color: #0d6efd;">NoteTheNote</span>
+			</a>
+
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="{{ url_for('chatbot') }}" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="{{ url_for('features') }}" class="nav-link">Features</a></li>
+				<li class="nav-item"><a href="{{ url_for('contact') }}"
+					class="nav-link   active" aria-current="page">Contact Us</a></li>
+				<li class="nav-item"><a href="{{ url_for('faq') }}" class="nav-link">FAQs</a></li>
+				<li class="nav-item"><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+			</ul>
+		</header>
+	</div>
+
+	<div class="form-main">
+		<div class="main-wrapper">
+			<h2 class="form-head">Contact From</h2>
+			<form class="form-wrapper">
+				<div class="form-card">
+					<input class="form-input" type="text" name="full_name"
+						required="required" /> <label class="form-label"
+						for="full_name">Full Name</label>
+				</div>
+
+				<div class="form-card">
+					<input class="form-input" type="email" name="email"
+						required="required" /> <label class="form-label"
+						for="email">Email</label>
+				</div>
+
+				<div class="form-card">
+					<input class="form-input" type="number" name="phone_number"
+						required="required" /> <label class="form-label"
+						for="phone_number">Phone number</label>
+				</div>
+
+				<div class="form-card">
+					<textarea class="form-textarea" maxlength="420" rows="3"
+						name="message" required="required"></textarea>
+					<label class="form-textarea-label" for="message">Messgae</label>
+				</div>
+
+				<div class="btn-wrap">
+					<button>Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="foot">
+  <footer class="footer">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('chatbot') }}">Home</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('features') }}">Features</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('contact') }}">Contact Us</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('faq') }}">FAQs</a></li>
+      <li class="menu__item"><a class="menu__link" href="{{ url_for('about') }}">About</a></li>
+    </ul>
+    <p>&copy; 2024 NoteTheNote, Inc</p>
+  </footer>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

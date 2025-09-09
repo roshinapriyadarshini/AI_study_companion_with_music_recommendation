@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Text Analysis Model</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Analysis Model</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="input_method">Choose Input Method:</label>
+            <select name="input_method" id="input_method" required>
+                <option value="Text">Text</option>
+                <option value="Image">Image</option>
+            </select>
+            <div id="text-input" class="input-section">
+                <textarea name="user_input" placeholder="Please enter a paragraph..."></textarea>
+            </div>
+            <div class="number-input-section">
+                <label for="num_questions">Number of Questions:</label>
+                <input type="number" name="num_questions" id="num_questions" value="10" min="1" max="100" required>
+            </div>
+            <div id="image-input" class="input-section">
+                <input type="file" name="uploaded_file" accept="image/*">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('input_method').addEventListener('change', function() {
+            document.getElementById('text-input').style.display = this.value === 'Text' ? 'block' : 'none';
+            document.getElementById('image-input').style.display = this.value === 'Image' ? 'block' : 'none';
+        });
+        // Trigger change event on page load to handle the default state
+        document.getElementById('input_method').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

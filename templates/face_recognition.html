@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Detection & Music Recommendations 🎵</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1400/800') center/cover;
+            opacity: 0.1;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .video-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .video-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(4px);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-feed {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .playlist-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .playlist-header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            background: rgba(52, 152, 219, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .playlist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .playlist-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        .playlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        }
+
+        .playlist-content {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .playlist-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .playlist-info {
+            margin-left: 20px;
+            flex-grow: 1;
+        }
+
+        .playlist-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .spotify-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #1DB954, #1ed760);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .spotify-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(45deg, #1ed760, #1DB954);
+        }
+
+        .playlist-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .playlist-container::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.5);
+            border-radius: 5px;
+        }
+
+        .playlist-container::-webkit-scrollbar-thumb {
+            background: rgba(136, 136, 136, 0.8);
+            border-radius: 5px;
+            border: 2px solid rgba(241, 241, 241, 0.5);
+        }
+
+        .playlist-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(85, 85, 85, 0.9);
+        }
+
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .video-section,
+            .playlist-section {
+                width: 100%;
+            }
+
+            .playlist-container {
+                max-height: none;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .playlist-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mood Detection & Music Recommendations 🎵</h1>
+            <a href="{{ url_for('chatbot') }}" class="home-button">🏠 Home</a>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="video-section">
+                <div class="video-container">
+                    <img src="{{ url_for('video_feed') }}" class="video-feed" alt="Video Feed">
+                </div>
+            </div>
+
+            <div class="playlist-section">
+                <h2 class="playlist-header">🎵 Recommended Playlists</h2>
+                <div id="playlists" class="playlist-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updatePlaylists() {
+            fetch('/get_current_emotion')
+                .then(response => response.json())
+                .then(data => {
+                    const playlistsContainer = document.getElementById('playlists');
+                    const emotion = data.emotion;
+                    const playlists = data.playlists;
+
+                    playlistsContainer.innerHTML = playlists.map(playlist => `
+                        <div class="playlist-card">
+                            <div class="playlist-content">
+                                ${playlist.image ?
+                            `<img src="${playlist.image}" class="playlist-image" alt="${playlist.name}">` :
+                            `<div class="playlist-image" style="background: #ddd; display: flex; align-items: center; justify-content: center;">
+                                        <span>No Image</span>
+                                    </div>`}
+                                <div class="playlist-info">
+                                    <h3 class="playlist-name">${playlist.name}</h3>
+                                    <a href="${playlist.url}" target="_blank" class="spotify-button">
+                                        🎧 Listen on Spotify
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        setInterval(updatePlaylists, 3000);
+        updatePlaylists();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+Flask
+Pillow
+pytesseract
+google-generativeai
+speechrecognition
+nltk
